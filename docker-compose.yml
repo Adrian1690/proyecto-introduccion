@@ -1,0 +1,11 @@
+version: '3'
+
+services: 
+
+  mysqlse3:
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: se3
+    ports:
+      - "3309:3306"
