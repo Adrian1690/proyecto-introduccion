@@ -1,20 +1,14 @@
 import React from 'react';
-import './App.css';
-import { Collapsible, CollapsibleItem } from 'react-materialize';
+import Recipes from './Components/Recipes/Recipes';
+import { Provider } from 'react-redux';
+import store from './Reducers/store';
 
 const App = () => {
 	return (
-		<Collapsible popout defaultActiveKey={0}>
-			<CollapsibleItem header='First' icon='filter_drama'>
-				Lorem ipsum dolor sit amet.
-			</CollapsibleItem>
-			<CollapsibleItem header='Second' icon='place'>
-				Lorem ipsum dolor sit amet.
-			</CollapsibleItem>
-			<CollapsibleItem header='Third' icon='whatshot'>
-				Lorem ipsum dolor sit amet.
-			</CollapsibleItem>
-		</Collapsible>
+		// surely here will be router 
+		<Provider store={store}>
+			<Recipes />
+		</Provider>
 	);
 };
 
