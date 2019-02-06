@@ -1,24 +1,11 @@
 import React, { Component } from 'react';
 import '../../css/Recipes.scss';
-import { Row, Col, Collapsible, CollapsibleItem, Button, Modal } from 'react-materialize';
+import { Row, Col, Collapsible, CollapsibleItem, Button } from 'react-materialize';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { loadRecipes } from '../../ActionCreators/RecipesActions';
 import WithLoading from '../HOC/WithLoading';
-import FormRecipe from './FormRecipe';
-
-const ActionsModal = () => {
-    return (
-        <div> 
-            <Button flat modal="close" waves="light">
-                Close
-            </Button> 
-            <Button modal="close" waves="light" className="red" onClick={ e => console.log('add') } >
-                Save
-            </Button>
-        </div> 
-    )
-}
+import AddRecipe from './AddRecipe';
 
 const Recipes = ({recipes}) => {
     return (
@@ -46,6 +33,7 @@ const RecipesEnhance = WithLoading(Recipes);
 
 class RecipesContainer extends Component {
 
+
     componentDidMount(){
         const { dispatch } = this.props;
         dispatch(loadRecipes())
@@ -58,19 +46,8 @@ class RecipesContainer extends Component {
         return (
             <Row className="recipes-wrapper">
                 <Col s={12} m={12} l={8} className="recipes-container">
-                    <Modal
-                        open={false}
-                        header='Modal Recipe'
-                        actions={<ActionsModal />}
-                        trigger={<Button 
-                            floating 
-                            large className='red' 
-                            waves='light' 
-                            icon='add' />}
-                    >
-                        <FormRecipe />
-                    </Modal>
                     
+                    <AddRecipe />
                     <RecipesEnhance 
                         isFetching={isFetching} 
                         recipes={recipes} />
