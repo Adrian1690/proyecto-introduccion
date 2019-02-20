@@ -19,10 +19,15 @@ class IngredientsForm extends Component {
         }
 
         this.addIngredient = this.addIngredient.bind(this)
+        this.removeIngredient = this.removeIngredient.bind(this)
     }
 
     addIngredient(){
-        this.setState(state => ({ nIngredients: state.nIngredients +1 }))
+        this.setState(state => ({ nIngredients: state.nIngredients + 1 }))
+    }
+
+    removeIngredient(){
+        this.setState(state => ({ nIngredients: state.nIngredients - 1}))
     }
 
     render(){
@@ -59,7 +64,9 @@ class IngredientsForm extends Component {
                                         floating 
                                         className='red' 
                                         waves='light' 
-                                        icon='remove' />
+                                        icon='remove' 
+                                        onClick={this.removeIngredient}
+                                        />
                                 </Col>
                             </Row>
                         )

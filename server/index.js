@@ -20,6 +20,8 @@ app.get("/", (req, res) => {
     res.send('Hello Adrian');
 });
 
+app.get('/recipes', routes.recipes.list);
+
 app.get("/json", routes.list);
 
 app.listen(port, () => {
