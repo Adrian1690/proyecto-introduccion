@@ -1,29 +1,27 @@
-import { dbConnection } from '../db/mysql-connection';
+import mongoose from "mongoose";
 
-export const list = (callback) => { 
-    console.log('im in model recipes list');
-    const query = "select * from recipes";
-    dbConnection.query(query, (err, result, fields) => {
-        if(err) throw err;
+var recipeSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+    },
+    category: {
+        type: String,
+        required: true,
+    },
+    chef: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String
+    }
+});
 
-        callback(result);
-    });
-};
+recipeSchema.static({
+    list: function (callback) {
+        this.find({}, null, { sort: { _id: -1 } }, callback);
+    }
+})
 
-export const save = (callback) => {
-    const query = `INSERT INTO recipes values (value1,value2)`;
-    dbConnection.query(query, (err, result, fields) => {
-        if (err) throw err;
-
-        callback(result);
-    });
-};
-
-export const remove = (callback) => {
-    const query = `DELETE FROM recipes where id_recipe = ?`;
-    dbConnection.query(query, (err, result, fields) => {
-        if (err) throw err;
-
-        callback(result);
-    });
-}
+export default mongoose.model('Recipe', recipeSchema, 'recipes');
