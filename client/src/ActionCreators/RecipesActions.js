@@ -5,9 +5,10 @@ export const loadRecipes = () => dispatch => {
 
     dispatch(actions.setIsFetchingRecipes());
 
-    return axios.get('/recipes-server')
+    //return axios.get('/recipes-server')
+    return axios.get('/recipes')
         .then( response => {
-            dispatch( actions.loadRecipes(response.data) )
+            dispatch( actions.loadRecipes(response.data.recipes) )
         })
 }
 

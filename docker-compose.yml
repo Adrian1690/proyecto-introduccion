@@ -2,6 +2,11 @@ version: '3'
 
 services: 
 
+  se3front:
+        build: ./client/
+        image: adrian1690/se3front
+        ports:
+            - 8000:8000
   mongodb:
         image: mongo:latest
         container_name: "mongodb"
@@ -14,4 +19,4 @@ services:
           - ./data/db:/data/db
         ports:
             - 27017:27017
-        command: mongod --smallfiles --logpath=/dev/null # --quiet
+        command: mongod --logpath=/dev/null # --quiet
