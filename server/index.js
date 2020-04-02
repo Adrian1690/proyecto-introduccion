@@ -31,6 +31,9 @@ app.get("/", (req, res) => {
 });
 
 app.get('/recipes', routes.recipes.list);
+app.post('/recipes', routes.recipes.add);
+app.put('/recipes/:id', routes.recipes.edit);
+app.delete('/recipes/:id', routes.recipes.remove);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
