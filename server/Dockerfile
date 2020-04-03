@@ -1,6 +1,8 @@
-FROM node:12.16.1-alpine as builder
+FROM node:12.16.1-alpine
 WORKDIR /app
 COPY . .
 RUN npm install react-scripts -g --silent
-RUN yarn install
-RUN yarn build:staging
+RUN npm install
+
+EXPOSE 4000
+CMD ["npm", "run", "start"]

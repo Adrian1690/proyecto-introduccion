@@ -1,12 +1,24 @@
 version: '3'
 
 services: 
-
   se3front:
         build: ./client/
         image: adrian1690/se3front
         ports:
             - 8000:8000
+        depends_on: 
+          - se3back
+  
+  se3back:
+        build: ./server/
+        image: adrian1690/se3back
+        ports:
+            - 4000:4000
+        volumes:
+          - ./server:/app
+        depends_on: 
+          - mongodb
+
   mongodb:
         image: mongo:latest
         container_name: "mongodb"

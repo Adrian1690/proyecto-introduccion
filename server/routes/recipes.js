@@ -1,6 +1,16 @@
 export const list =  (req, res, next) => {
     req.models.Recipe.list( (error, recipes) => {
         if (error) return next(error);
+        
+        // test porpuses
+        /*
+        const response = [
+            {"_id":"5e864bc6055eeea75656692f","title":"Recipe22","category":"category2","chef":"chef2","description":"description2"},
+            {"_id":"5ca6a7f5002f14ba7e2a86f2","title":"Recipe1","category":"category1","chef":"chef1","description":"description1"}
+        ]
+        res.send({recipes: response});
+        */
+        
         res.send({recipes});
     });
 };

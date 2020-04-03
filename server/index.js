@@ -5,7 +5,8 @@ import * as routes from './routes';
 import * as models from './models';
 import mongoose from 'mongoose';
 
-const dbUrl = process.env.MONGOHQ_URL || 'mongodb://localhost:27017/recipe';
+const dbUrl = process.env.MONGOHQ_URL || 'mongodb://mongodb:27017/recipe';
+console.log('url mongo =>', dbUrl)
 mongoose.connect(dbUrl, {useNewUrlParser:true});
 const db = mongoose.connection;
 db.once('open', function() {
@@ -27,7 +28,7 @@ app.use((req, res, next) => {
 
 
 app.get("/", (req, res) => {
-    res.send('Hello Adrian');
+    res.send('Hello Adrian!!');
 });
 
 app.get('/recipes', routes.recipes.list);
