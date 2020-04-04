@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+  labels:
+    app: testing-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: server-app-pod
+      app: testing-app
+  template:
+    metadata:
+      labels:
+        tier: server-app-pod
+        app: testing-app
+    spec:
+      containers:
+      - name: server
+        image: adrian1690/se3back
+        ports:
+        - containerPort: 4000

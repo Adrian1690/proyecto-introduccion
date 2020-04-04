@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client
+  labels:
+    app: testing-app
+
+spec:
+  type: NodePort
+  selector:
+    tier: client-app-pod
+    app: testing-app
+  ports:
+  - port: 80
+    targetPort: 80

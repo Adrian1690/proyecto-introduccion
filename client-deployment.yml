@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+  labels:
+    app: testing-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: client-app-pod
+      app: testing-app
+  template:
+    metadata:
+      labels:
+        tier: client-app-pod
+        app: testing-app
+    spec:
+      containers:
+      - name: client
+        image: adrian1690/se3front
+        ports:
+        - containerPort: 80

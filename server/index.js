@@ -5,13 +5,13 @@ import * as routes from './routes';
 import * as models from './models';
 import mongoose from 'mongoose';
 
-const dbUrl = process.env.MONGOHQ_URL || 'mongodb://mongodb:27017/recipe';
-console.log('url mongo =>', dbUrl)
-mongoose.connect(dbUrl, {useNewUrlParser:true});
-const db = mongoose.connection;
-db.once('open', function() {
-    console.log('connected to mongooo')
-});
+//const dbUrl = process.env.MONGOHQ_URL || 'mongodb://mongodb:27017/recipe';
+//console.log('url mongo =>', dbUrl)
+//mongoose.connect(dbUrl, {useNewUrlParser:true});
+//const db = mongoose.connection;
+//db.once('open', function() {
+//    console.log('connected to mongooo')
+//});
 
 const app = express();
 const port = 4000;
