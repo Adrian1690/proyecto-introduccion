@@ -6,10 +6,10 @@ metadata:
     app: testing-app
 
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     tier: server-app-pod
     app: testing-app
   ports:
-  - port: 4000
+  - port: 80
     targetPort: 4000

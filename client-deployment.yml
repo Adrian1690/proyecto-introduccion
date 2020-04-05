@@ -5,7 +5,7 @@ metadata:
   labels:
     app: testing-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       tier: client-app-pod
